@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --color-rich-black: #09090B;
+  --color-graphite: #18181B;
+  --color-neon-purple: #8B5CF6;
+  --color-indigo: #6366F1;
+  --color-soft-cyan: #67E8F9;
+}
+
 :root {
-  --bg: #09090B; /* page background */
-  --surface: #18181B; /* panels / header */
+  --bg: #09090B;
+  --surface: #18181B;
   --main_color: rgba(24,24,27,0.85);
   --accent: #8B5CF6;
   --accent-2: #6366F1;
@@ -16,19 +24,29 @@
   --title_size: 28px;
   --margin_text: 2%;
   --name_size: 18px;
+  --muted_color: #98a0aa;
+  --accent-1: #a78bfa;
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
-}
-
-body {
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text_color);
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 200ms ease, color 200ms ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Subtle fade-in for sections */
@@ -50,9 +68,7 @@ body {
 }
 
 /* Sections */
-.section {
-  padding: 4rem 0;
-}
+.section { padding: 4rem 0; }
 
 .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
 
@@ -68,12 +84,6 @@ body {
   transition: transform 150ms ease, box-shadow 150ms ease;
 }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(12,20,40,0.45); }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .top_page {
   position: fixed;
@@ -106,17 +116,94 @@ body {
 
 /* Reduce paddings on small screens */
 @media (max-width: 900px) {
-	:root { --main_padding: 1.5% 4%; --title_size: 24px; }
+  :root { --main_padding: 1.5% 4%; --title_size: 24px; }
 }
 
 @media (max-width: 700px) {
-	:root { --main_padding: 1rem 3%; --title_size: 20px; --main_size: 15px; --logo_size: 24px; }
-	.container_about, .container_service, .container_contact { padding: 1rem 3%; }
+  :root { --main_padding: 1rem 3%; --title_size: 20px; --main_size: 15px; --logo_size: 24px; }
+  .container_about, .container_service, .container_contact { padding: 1rem 3%; }
 }
 
 @media (max-width: 420px) {
-	:root { --main_padding: 0.8rem 2.5%; --title_size: 18px; --main_size: 14px; --logo_size: 20px; }
+  :root { --main_padding: 0.8rem 2.5%; --title_size: 18px; --main_size: 14px; --logo_size: 20px; }
 }
 
 /* Improve touch targets */
 .menu li { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+
+/* ──────────────────────────────────────────────
+   Scroll-triggered animations
+   ────────────────────────────────────────────── */
+.animate-hidden {
+  opacity: 0;
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.animate-hidden.animate-fade-up { transform: translateY(30px); }
+.animate-hidden.animate-fade-left { transform: translateX(-30px); }
+.animate-hidden.animate-fade-right { transform: translateX(30px); }
+.animate-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+/* ──────────────────────────────────────────────
+   Gradient background orbs (animated)
+   ────────────────────────────────────────────── */
+.gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.1;
+  animation: orbFloat 30s ease-in-out infinite;
+}
+.gradient-orb--1 {
+  width: 500px; height: 500px;
+  background: #8B5CF6;
+  top: -10%; left: -5%;
+  animation-delay: 0s;
+}
+.gradient-orb--2 {
+  width: 400px; height: 400px;
+  background: #6366F1;
+  bottom: -5%; right: -5%;
+  animation-delay: -10s;
+}
+.gradient-orb--3 {
+  width: 350px; height: 350px;
+  background: #67E8F9;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -20s;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -40px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(40px, 30px) scale(1.02); }
+}
+
+/* ──────────────────────────────────────────────
+   Scroll progress indicator
+   ────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 100;
+  background: transparent;
+}
+.scroll-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 0 2px 2px 0;
+  transition: width 80ms ease-out;
+}
