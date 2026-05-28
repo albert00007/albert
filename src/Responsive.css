@@ -1,0 +1,21 @@
+/* Responsive helpers and breakpoints */
+
+/* Reduce paddings on small screens */
+@media (max-width: 900px) {
+	:root { --main_padding: 1.5% 4%; --title_size: 24px; }
+}
+
+@media (max-width: 700px) {
+	:root { --main_padding: 1rem 3%; --title_size: 20px; --main_size: 15px; --logo_size: 24px; }
+	.container_about, .container_service, .container_contact { padding: 1rem 3%; }
+}
+
+@media (max-width: 420px) {
+	:root { --main_padding: 0.8rem 2.5%; --title_size: 18px; --main_size: 14px; --logo_size: 20px; }
+}
+
+/* Utility: center content in sections */
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+/* Improve touch targets */
+.menu li { -webkit-tap-highlight-color: rgba(0,0,0,0); }
