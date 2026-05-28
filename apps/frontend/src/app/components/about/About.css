@@ -1,0 +1,68 @@
+
+.container_about {
+  width: 100%;
+  min-height: 50vh;
+  padding: var(--main_padding);
+  background: radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(129,140,248,0.18), transparent 55%),
+              linear-gradient(rgba(2,6,23,0.92), rgba(15,23,42,0.96)),
+              url(/images/about.png) no-repeat center/cover;
+  background-attachment: scroll;
+  margin: auto;
+}
+
+.container_about p {
+  color: var(--text_color);
+  font-family: var(--font);
+  line-height: 1.5rem;
+  text-shadow: none;
+}
+
+.container_about h2 {
+  color: var(--text_color);
+  font-family: var(--font);
+  font-size: var(--title_size);
+  margin-bottom: var(--margin_text);
+}
+
+/* Card & typography */
+.about-card {
+  background: linear-gradient(135deg, rgba(15,23,42,0.92), rgba(15,23,42,0.96));
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 24px 60px rgba(15,23,42,0.9);
+  border: 1px solid rgba(148,163,184,0.35);
+}
+
+.about-card p + p {
+  margin-top: 0.9rem;
+}
+
+.about-card h2 {
+  position: relative;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.about-card h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 72px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* Mobile typography tweaks */
+@media (max-width: 700px) {
+  .container_about p { font-size: 15px; line-height: 1.6; text-align: left; }
+  .container_about h2 { font-size: 20px; }
+  .container_about { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .about-card { padding: 1.75rem 1.4rem; border-radius: 14px; }
+}
+
+/* Use section-inner for readable lines */
+.container_about .section-inner { padding-top: 2rem; padding-bottom: 2rem; }
+.container_about .lead { color: var(--muted); font-size: 16px; margin-bottom: 1rem; }
