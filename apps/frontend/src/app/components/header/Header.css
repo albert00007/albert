@@ -4,8 +4,8 @@ header {
   padding: 0 5%;
   background: linear-gradient(
     90deg,
-    rgba(7, 16, 32, 0.96),
-    rgba(7, 16, 32, 0.9)
+    rgba(24, 24, 27, 0.96),
+    rgba(24, 24, 27, 0.9)
   );
   display: flex;
   justify-content: space-between;
@@ -14,7 +14,7 @@ header {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(10px);
-  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.65);
+  box-shadow: 0 12px 30px rgba(9, 9, 11, 0.65);
 }
 
 .logo {
@@ -63,21 +63,46 @@ nav {
     transform 120ms ease;
 }
 
-.menu li:hover {
-  background: rgba(124, 58, 237, 0.14);
-  color: var(--accent-2);
+.menu li:hover,
+.menu a:hover {
+  background: rgba(139, 92, 246, 0.14); /* Neon Purple low opacity */
+  color: var(--accent); /* Neon Purple */
   transform: translateY(-2px);
 }
 
-.menu li:focus {
-  outline: 3px solid rgba(6, 182, 212, 0.18);
+.menu li:focus,
+.menu a:focus {
+  outline: 3px solid rgba(103, 232, 249, 0.18); /* Soft Cyan */
   outline-offset: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-contact-header {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.btn-contact-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5), 0 0 15px rgba(99, 102, 241, 0.4);
 }
 
 /* Hamburger button (mobile) */
 .hamburger {
   display: none;
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(24, 24, 27, 0.7);
   border: 1px solid rgba(148, 163, 184, 0.4);
   padding: 8px;
   cursor: pointer;
@@ -131,6 +156,11 @@ nav {
     align-items: center;
     justify-content: center;
   }
+  
+  .btn-contact-header {
+    font-size: 13px;
+    padding: 0.4rem 0.9rem;
+  }
 
   /* hide menu until opened */
   .nav-wrapper .menu {
@@ -144,20 +174,20 @@ nav {
   .nav-wrapper .menu.open {
     position: absolute;
     top: 100%;
-    right: 0;
+    right: -100px;
     left: auto;
-    margin-top: 0.6rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
     background: linear-gradient(
       180deg,
-      rgba(15, 23, 42, 0.98),
-      rgba(15, 23, 42, 0.96)
+      rgba(24, 24, 27, 0.98),
+      rgba(24, 24, 27, 0.96)
     );
     padding: 0.6rem;
     border-radius: 12px;
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.85);
+    box-shadow: 0 16px 40px rgba(9, 9, 11, 0.85);
     visibility: visible;
     opacity: 1;
     pointer-events: auto;

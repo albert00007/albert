@@ -24,18 +24,6 @@ export default function Header() {
         <p>MicroStateDev</p>
       </div>
 
-      <button
-        type="button"
-        className={`hamburger ${isOpen ? "is-open" : ""}`}
-        aria-label={isOpen ? "Close navigation" : "Open navigation"}
-        aria-expanded={isOpen}
-        onClick={() => setIsOpen((prev) => !prev)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
-
       <nav className={`nav-wrapper ${isOpen ? "open" : ""}`}>
         <ul className={`menu ${isOpen ? "open" : ""}`}>
           <li
@@ -47,31 +35,34 @@ export default function Header() {
             Home
           </li>
           <li>
-            <a
-              href="#about"
-              onClick={closeMenu}
-            >
+            <a href="#about" onClick={closeMenu}>
               About
             </a>
           </li>
           <li>
-            <a
-              href="#service"
-              onClick={closeMenu}
-            >
+            <a href="#service" onClick={closeMenu}>
               Service
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              onClick={closeMenu}
-            >
-              Contact
             </a>
           </li>
         </ul>
       </nav>
+
+      <div className="header-actions">
+        <a href="#contact" className="btn-contact-header">
+          Связаться
+        </a>
+        <button
+          type="button"
+          className={`hamburger ${isOpen ? "is-open" : ""}`}
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </header>
   );
 }

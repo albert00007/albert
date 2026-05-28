@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #071020; /* page background */
-  --surface: #0b1117; /* panels / header */
-  --main_color: rgba(11,17,23,0.85);
-  --accent: #7c3aed;
-  --accent-2: #06b6d4;
+  --bg: #09090B; /* page background */
+  --surface: #18181B; /* panels / header */
+  --main_color: rgba(24,24,27,0.85);
+  --accent: #8B5CF6;
+  --accent-2: #6366F1;
+  --accent-3: #67E8F9;
   --main_padding: 2% 5%;
   --text_color: #e6eef8;
   --muted: #98a6b0;
