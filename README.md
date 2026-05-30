@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# MicroStateDev (MSD) — Corporate Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Full-stack landing site for **MicroStateDev**, a software development agency based in Yerevan, Armenia.
 
-## Available Scripts
+## Stack
 
-In the project directory, you can run:
+| Layer | Tech |
+|-------|------|
+| **Frontend** | Next.js 16.2.6 + React 19.2.4 + Tailwind CSS v4 + TypeScript |
+| **Backend** | NestJS 11 + Apollo GraphQL + TypeORM + SQLite |
+| **Dev tools** | Stitch MCP (Google Labs AI UI design), GPT 5.2 Codex conductor |
 
-### `npm start`
+## Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+lyov-sayt-msd/
+├── apps/
+│   ├── frontend/     — Next.js landing page
+│   │   └── src/app/
+│   │       ├── components/  — Header, About, Service, Portfolio, Contact, ContactForm, Footer, Effects
+│   │       ├── hooks/       — useScrollAnimation
+│   │       └── layout.tsx   — SEO + JSON-LD
+│   └── backend/      — NestJS API
+│       └── src/
+│           ├── content/     — Content entity + GraphQL CRUD
+│           └── inquiry/     — Inquiry entity + create mutation
+├── legacy/           — Legacy files (previous CRA version)
+└── README.md
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Quick start
 
-### `npm test`
+```bash
+# Frontend
+cd apps/frontend
+npm install
+npm run dev        # → http://localhost:3001
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Backend
+cd apps/backend
+npm install
+npm run start:dev  # → http://localhost:3000
+```
 
-### `npm run build`
+## Build
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+cd apps/frontend && npm run build   # ✅ clean
+cd apps/backend  && npm run build   # ✅ clean
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## GraphQL API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`POST http://localhost:3000/graphql`
 
-### `npm run eject`
+- `contents(section: String): [Content]` — get page content by section
+- `content(id: Int!): Content` — single content item
+- `createInquiry(input: CreateInquiryInput!): Inquiry` — submit contact form
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## AI Models
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Conductor**: OpenAI GPT 5.2 Codex (OAuth)
+- **Available**: Gemini 2.5 Pro/Flash, DeepSeek V3/R1, GitHub Models (GPT-4o, Llama 3.1), Nemotron local

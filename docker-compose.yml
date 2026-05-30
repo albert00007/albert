@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - msd-network
+
+  frontend:
+    build:
+      context: ./apps/frontend
+      dockerfile: Dockerfile
+    environment:
+      - API_URL=http://backend:3000/graphql
+      - NEXT_PUBLIC_API_URL=/graphql
+    networks:
+      - msd-network
+
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=sqlite:///app/data/database.sqlite
+      - JWT_SECRET=${JWT_SECRET:-supersecret}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+    volumes:
+      - sqlite_data:/app/data
+    networks:
+      - msd-network
+
+networks:
+  msd-network:
+
+volumes:
+  sqlite_data:

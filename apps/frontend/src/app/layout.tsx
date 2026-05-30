@@ -1,83 +1,31 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './globals.css'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import CookieConsent from './components/shared/CookieConsent'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "MicroStateDev — Full-Stack Software Development Agency",
-  description: "MSD (MicroStateDev) delivers enterprise-grade web, backend, and mobile solutions using React, Next.js, NestJS, GraphQL, and React Native. Based in Yerevan, Armenia.",
-  keywords: "software development, web development, React, Next.js, NestJS, GraphQL, React Native, Armenia, Yerevan",
-  openGraph: {
-    title: "MicroStateDev — Full-Stack Software Development Agency",
-    description: "MSD (MicroStateDev) delivers enterprise-grade web, backend, and mobile solutions using React, Next.js, NestJS, GraphQL, and React Native. Based in Yerevan, Armenia.",
-    url: "https://microstatedev.com",
-    siteName: "MicroStateDev",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MicroStateDev — Full-Stack Software Development Agency",
-    description: "MSD (MicroStateDev) delivers enterprise-grade web, backend, and mobile solutions using React, Next.js, NestJS, GraphQL, and React Native. Based in Yerevan, Armenia.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  metadataBase: new URL("https://microstatedev.com"),
-};
+  title: 'MicroStateDev | Full-Stack Software Development Agency',
+  description: 'Enterprise-grade web & mobile applications. Nest.js, Next.js, React Native experts in Yerevan, Armenia.',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  "name": "MicroStateDev",
-                  "alternateName": "MSD",
-                  "description": "MSD (MicroStateDev) delivers enterprise-grade web, backend, and mobile solutions using React, Next.js, NestJS, GraphQL, and React Native. Based in Yerevan, Armenia.",
-                  "email": "tech@microstatedev.com",
-                  "telephone": "+37441355605",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Yerevan",
-                    "addressCountry": "Armenia"
-                  },
-                  "url": "https://microstatedev.com"
-                },
-                {
-                  "@type": "WebSite",
-                  "name": "MicroStateDev",
-                  "url": "https://microstatedev.com"
-                }
-              ]
-            })
-          }}
-        />
-        {children}
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+      </head>
+      <body className={`${inter.className} text-white overflow-x-hidden min-h-screen flex flex-col`}>
+        <div id="root-container" className="flex-1 flex flex-col">
+          {children}
+        </div>
+        <CookieConsent />
       </body>
     </html>
-  );
+  )
 }

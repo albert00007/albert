@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solutions | MicroStateDev</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Geist-like fallback using Inter for system feel as Geist is a custom font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #131316;
+            color: #e4e1e6;
+        }
+        .font-headline-lg { font-family: 'Inter', sans-serif; }
+        .font-body-md { font-family: 'Inter', sans-serif; }
+        .font-label-md { font-family: 'JetBrains Mono', monospace; }
+        
+        .glass-card {
+            background: rgba(24, 24, 27, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #27272A;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: #d0bcff;
+            box-shadow: 0px 4px 24px rgba(139, 92, 246, 0.25);
+            transform: translateY(-4px);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(208, 188, 255, 0.3);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 25px rgba(208, 188, 255, 0.5);
+        }
+        .gradient-border {
+            position: relative;
+            background: #131316;
+            background-clip: padding-box;
+            border: 1px solid transparent;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -1px;
+            border-radius: inherit;
+            background: linear-gradient(to bottom right, #27272A, #d0bcff);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#131316",
+                    "inverse-primary": "#6d3bd7",
+                    "surface-tint": "#d0bcff",
+                    "tertiary-fixed": "#91f1ff",
+                    "surface-container-highest": "#353438",
+                    "on-tertiary-container": "#002f34",
+                    "on-primary": "#3c0091",
+                    "secondary-container": "#3131c0",
+                    "on-primary-container": "#340080",
+                    "inverse-on-surface": "#303033",
+                    "outline-variant": "#494454",
+                    "surface-dim": "#131316",
+                    "on-background": "#e4e1e6",
+                    "primary-fixed": "#e9ddff",
+                    "on-secondary-container": "#b0b2ff",
+                    "surface-variant": "#353438",
+                    "primary-fixed-dim": "#d0bcff",
+                    "surface-bright": "#39393c",
+                    "surface": "#131316",
+                    "on-secondary-fixed-variant": "#2f2ebe",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e4e1e6",
+                    "outline": "#958ea0",
+                    "on-error": "#690005",
+                    "surface-container-low": "#1b1b1e",
+                    "on-secondary": "#1000a9",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed": "#e1e0ff",
+                    "surface-container-lowest": "#0e0e11",
+                    "on-surface": "#e4e1e6",
+                    "on-secondary-fixed": "#07006c",
+                    "tertiary-container": "#00a0af",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed": "#23005c",
+                    "on-tertiary-fixed": "#001f23",
+                    "on-primary-fixed-variant": "#5516be",
+                    "tertiary-fixed-dim": "#54d8e8",
+                    "tertiary": "#54d8e8",
+                    "surface-container": "#1f1f22",
+                    "primary-container": "#a078ff",
+                    "on-surface-variant": "#cbc3d7",
+                    "secondary-fixed-dim": "#c0c1ff",
+                    "primary": "#d0bcff",
+                    "surface-container-high": "#2a2a2d",
+                    "secondary": "#c0c1ff",
+                    "on-tertiary-fixed-variant": "#004f57",
+                    "on-tertiary": "#00363c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "0.5rem",
+                    "xl": "4rem",
+                    "margin-desktop": "2.5rem",
+                    "sm": "1rem",
+                    "md": "1.5rem",
+                    "lg": "2rem",
+                    "margin-mobile": "1rem",
+                    "gutter": "1.5rem",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 docked full-width top-0 sticky z-50 shadow-[0_4_24px_rgba(139,92,246,0.15)]">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-[1200px] mx-auto h-16">
+<div class="font-headline-md text-headline-md font-bold tracking-tighter text-on-surface">MicroStateDev</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Platform</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Solutions</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Documentation</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="hidden md:flex bg-primary-container text-on-primary-container font-label-md text-label-md px-md py-xs rounded-lg scale-95 active:scale-90 transition-transform neon-glow">
+                    Launch Terminal
+                </button>
+<span class="material-symbols-outlined md:hidden text-on-surface">menu</span>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Hero Section -->
+<section class="text-center mb-xl">
+<h1 class="font-headline-lg text-headline-lg md:text-display-lg text-on-surface mb-md">
+                Our Logistics <span class="text-primary drop-shadow-[0_0_15px_rgba(208,188,255,0.4)]">Solutions</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Next-generation kinetic precision for the global supply chain. Scalable, automated, and mathematically optimized.
+            </p>
+</section>
+<!-- Solutions Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-xl">
+<!-- Card 1: Atomic Freight -->
+<div class="glass-card p-lg rounded-xl flex flex-col items-start gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="package">package</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Atomic Freight</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Sub-second global shipping routing utilizing predictive kinetic modeling. High-velocity transit for mission-critical hardware and digital assets.
+                    </p>
+</div>
+<div class="mt-auto pt-md">
+<button class="font-label-md text-label-md border border-primary text-primary px-lg py-xs rounded-lg hover:bg-primary hover:text-on-primary transition-all duration-300">
+                        Learn More
+                    </button>
+</div>
+</div>
+<!-- Card 2: Warehouse Grids -->
+<div class="glass-card p-lg rounded-xl flex flex-col items-start gap-md">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="layout">mobile_layout</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Warehouse Grids</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Autonomous spatial optimization for massive distribution hubs. Dynamic slotting algorithms that adapt to real-time demand spikes.
+                    </p>
+</div>
+<div class="mt-auto pt-md">
+<button class="font-label-md text-label-md border border-primary text-primary px-lg py-xs rounded-lg hover:bg-primary hover:text-on-primary transition-all duration-300">
+                        Learn More
+                    </button>
+</div>
+</div>
+<!-- Card 3: Customs Routing -->
+<div class="glass-card p-lg rounded-xl flex flex-col items-start gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="file_check" style="font-variation-settings: 'FILL' 1;">folder_check</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Customs Routing</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Automated clearance protocols across 140+ jurisdictions. Reducing bureaucratic latency via secure, verified ledger synchronization.
+                    </p>
+</div>
+<div class="mt-auto pt-md">
+<button class="font-label-md text-label-md border border-primary text-primary px-lg py-xs rounded-lg hover:bg-primary hover:text-on-primary transition-all duration-300">
+                        Learn More
+                    </button>
+</div>
+</div>
+<!-- Card 4: Last-Mile Delivery -->
+<div class="glass-card p-lg rounded-xl flex flex-col items-start gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="truck">fire_truck</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Last-Mile Delivery</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Precision fulfillment for B2B and B2C endpoints. Hyper-local network distribution ensuring final node integrity and speed.
+                    </p>
+</div>
+<div class="mt-auto pt-md">
+<button class="font-label-md text-label-md border border-primary text-primary px-lg py-xs rounded-lg hover:bg-primary hover:text-on-primary transition-all duration-300">
+                        Learn More
+                    </button>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="relative overflow-hidden rounded-2xl bg-surface-container-low border border-outline-variant/20 p-xl text-center">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-tertiary/5 pointer-events-none"></div>
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg mb-md text-on-surface">Ready to optimize your supply chain?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg max-w-xl mx-auto">
+                    Connect with our technical architects to design a bespoke kinetic logistics framework tailored to your enterprise needs.
+                </p>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-xl py-md rounded-lg font-bold transition-all duration-300 neon-glow hover:scale-105 active:scale-95">
+                    Contact Sales
+                </button>
+</div>
+<!-- Abstract background graphic -->
+<div class="absolute -bottom-12 -right-12 w-64 h-64 bg-primary/20 blur-[80px] rounded-full"></div>
+<div class="absolute -top-12 -left-12 w-48 h-48 bg-tertiary/20 blur-[60px] rounded-full"></div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-desktop py-xl max-w-[1200px] mx-auto">
+<div class="md:col-span-4">
+<div class="font-headline-md text-headline-md font-bold text-on-surface mb-md">MicroStateDev</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                    Kinetic Precision Logistics for the modern developer ecosystem.
+                </p>
+</div>
+<div class="md:col-span-2">
+<h4 class="font-label-md text-label-md text-on-surface mb-sm">Links</h4>
+<ul class="space-y-xs">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-tertiary transition-colors" href="#">Network Status</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-tertiary transition-colors" href="#">Security</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-tertiary transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+<div class="md:col-span-6 flex flex-col md:items-end justify-between">
+<div class="flex gap-md mb-md md:mb-0">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-tertiary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-tertiary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant opacity-80">
+                    © 2024 MicroStateDev. Kinetic Precision Logistics.
+                </div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

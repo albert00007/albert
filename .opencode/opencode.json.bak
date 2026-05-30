@@ -1,0 +1,43 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "mcp": {
+    "stitch": {
+      "type": "local",
+      "command": ["/home/albert_vardanyan_2016/.config/opencode/scripts/stitch-proxy.sh"],
+      "enabled": true,
+      "description": "Google Stitch AI - generate UI designs, screens, landing pages from text prompts. Use for creating interfaces, app screens, prototyping."
+    }
+  },
+  "model": "google-vertex/gemini-3.1-pro-preview",
+  "fallbacks": [
+    "google-vertex/gemini-2.5-pro",
+    "google-vertex/gemini-2.5-flash",
+    "google-vertex/gemini-2.5-flash-lite",
+    "openai/gpt-5.2-codex",
+    "openai/gpt-5.2",
+    "openai/gpt-5.1-codex-max",
+    "openai/gpt-5.1-codex",
+    "openai/gpt-5.1-codex-mini",
+    "openai/gpt-5.1",
+    "grok-vertex/xai/grok-4.20-reasoning",
+    "deepseek/deepseek-chat",
+    "deepseek/deepseek-reasoner",
+    "github-models/gpt-4o",
+    "github-models/gpt-4o-mini",
+    "github-models/gpt-4.1",
+    "github-models/o3",
+    "github-models/o4-mini",
+    "github-models/o1",
+    "github-models/DeepSeek-R1",
+    "github-models/DeepSeek-V3",
+    "github-models/codestral",
+    "github-models/Mistral-large",
+    "github-models/Phi-4-reasoning",
+    "github-models/Meta-Llama-3.1-405B-Instruct",
+    "github-models/Llama-4-Maverick-17B-128E-Instruct",
+    "github-models/Llama-4-Scout-17B-16E-Instruct",
+    "github-models/Qwen2.5-Coder-32B-Instruct",
+    "nvidia/nemotron-3-nano-4b"
+  ]
+}
