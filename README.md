@@ -61,3 +61,33 @@ cd apps/backend  && npm run build   # ✅ clean
 
 - **Conductor**: OpenAI GPT 5.2 Codex (OAuth)
 - **Available**: Gemini 2.5 Pro/Flash, DeepSeek V3/R1, GitHub Models (GPT-4o, Llama 3.1), Nemotron local
+
+## Deployment Instructions (Production)
+
+To deploy the MicroStateDev corporate website on a clean server, follow these steps:
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/HappyTOPS/portfolio-next.git
+   cd portfolio-next
+   git checkout final-work
+   ```
+
+2. **Setup Environment Variables**
+   Rename or create a `.env` file in the root directory:
+   ```bash
+   cp .env.example .env
+   # Edit .env and securely set your JWT_SECRET and ADMIN_PASSWORD
+   nano .env
+   ```
+
+3. **Start the Application**
+   Using Docker Compose, build and run the services in detached mode:
+   ```bash
+   docker compose up -d --build
+   ```
+
+4. **Verify Deployment**
+   - The site will be available on port `8080` (or `80` if configured through Nginx reverse proxy).
+   - Check container logs if needed: `docker compose logs -f`
+   - Admin panel is accessible at `/admin` (Default password is the one set in `.env`).

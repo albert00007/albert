@@ -29,8 +29,8 @@ services:
       dockerfile: Dockerfile
     environment:
       - DATABASE_URL=sqlite:///app/data/database.sqlite
-      - JWT_SECRET=${JWT_SECRET:-supersecret}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     volumes:
       - sqlite_data:/app/data
     networks:

@@ -3,21 +3,24 @@
 import { useState, useEffect } from 'react';
 
 export default function CookieConsent() {
-  const [isVisible, setIsVisible] = useState(false);
+  // null = undetermined, true = show, false = hide
+  const [showBanner, setShowBanner] = useState<boolean | null>(null);
 
   useEffect(() => {
+    // This code only runs on the client, after the component has mounted.
     const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
-      setIsVisible(true);
-    }
+    setShowBanner(consent !== 'true');
   }, []);
 
   const handleAccept = () => {
     localStorage.setItem('cookie-consent', 'true');
-    setIsVisible(false);
+    setShowBanner(false);
   };
 
-  if (!isVisible) return null;
+  // Don't render anything on the server or if consent is given/undetermined.
+  if (showBanner === null || !showBanner) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-4 right-4 z-50 p-4 bg-[#09090B] border border-cyan-500/20 shadow-2xl rounded-sm flex items-center gap-4 max-w-xs font-mono">

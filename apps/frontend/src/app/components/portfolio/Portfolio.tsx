@@ -1,6 +1,5 @@
 "use client";
 import { useRef, MouseEvent } from 'react';
-import { motion } from 'framer-motion';
 
 const projects = [
   {
@@ -74,20 +73,16 @@ export default function Portfolio() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project, index) => (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
+            <div
               key={index}
-              className="glass-panel glow-card bg-[#09090B]/50 p-6 md:p-8 rounded-xl transition-all duration-300 ease-in-out hover:-translate-y-2 border border-outline-variant hover:border-primary/50 group"
+              className="glass-panel glow-card unified-card p-6 md:p-8 rounded-lg transition-all duration-300 ease-in-out hover:-translate-y-2 border border-outline-variant hover:border-[rgba(10,132,255,0.45)] group"
             >
               <div className="mb-4">
                  <span className="inline-block font-label-sm text-label-sm text-neon-indigo mb-sm uppercase tracking-widest" style={{ fontFamily: "var(--font)" }}>
                   {project.category}
                 </span>
               </div>
-               <h3 className="font-headline-md text-headline-md text-white mb-xs group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font)" }}>
+               <h3 className="font-headline-md text-headline-md text-white mb-xs group-hover:text-[var(--accent)] transition-colors" style={{ fontFamily: "var(--font)" }}>
                  {project.title}
                </h3>
                <p className="font-body-md text-body-md text-on-surface-variant mb-lg" style={{ fontFamily: "var(--font)" }}>
@@ -97,14 +92,14 @@ export default function Portfolio() {
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                     className="bg-primary/10 border border-primary/20 text-primary text-xs font-label-sm px-3 py-1.5 rounded-lg"
+                     className="bg-[rgba(10,132,255,0.10)] border border-[rgba(10,132,255,0.22)] text-primary text-xs font-label-sm px-3 py-1.5 rounded-md"
                     style={{ fontFamily: "var(--font)" }}
                   >
                     {t}
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

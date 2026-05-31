@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import Toast, { ToastType } from "../Toast";
+import { useI18n } from "../../i18nContext";
 
 interface FormData {
   name: string;
@@ -16,7 +17,7 @@ interface FormErrors {
   message?: string;
 }
 
-const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_API_URL || "/graphql";
+const GRAPHQL_ENDPOINT = "/api/graphql-proxy";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
@@ -28,6 +29,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const { t } = useI18n();
   
   const [toast, setToast] = useState<{show: boolean, message: string, type: ToastType}>({
     show: false,
@@ -100,12 +102,12 @@ export default function ContactForm() {
 
       setStatus("success");
       setFormData({ name: "", email: "", phone: "", message: "" });
-      setToast({ show: true, message: "Message sent successfully!", type: "success" });
+      setToast({ show: true, message: t.contact.success, type: "success" });
     } catch (err) {
       setStatus("error");
       const msg = err instanceof Error ? err.message : "Failed to send message";
       setErrorMessage(msg);
-      setToast({ show: true, message: msg, type: "error" });
+      setToast({ show: true, message: t.contact.error, type: "error" });
     }
   };
 
@@ -117,29 +119,26 @@ export default function ContactForm() {
   };
 
   const inputBase =
-    "w-full bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:border-blue-500 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.1)] rounded-xl px-4 py-3 text-[15px] outline-none transition-all duration-300 ease-in-out";
+    "w-full bg-[#050B16]/70 border border-white/10 text-white placeholder:text-white/35 focus:border-[var(--accent)] focus:shadow-[0_0_0_4px_rgba(10,132,255,0.12)] rounded-lg px-4 py-3 text-[15px] outline-none transition-all duration-300 ease-in-out";
   const inputError = "!border-red-500/50 focus:!shadow-[0_0_0_4px_rgba(239,68,68,0.15)]";
 
   if (status === "success") {
     return (
-      <div className="w-full h-full flex flex-col items-center justify-center gap-4 text-center p-8 bg-white/5 border border-white/10 rounded-2xl">
-        <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mb-2">
+      <div className="w-full h-full flex flex-col items-center justify-center gap-4 text-center p-8 glass-panel rounded-xl">
+        <div className="w-16 h-16 rounded-full bg-[var(--accent-3)]/10 border border-[var(--accent-3)]/30 flex items-center justify-center mb-2">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
             <circle cx="12" cy="12" r="11" fill="none" stroke="#34A853" strokeWidth="1.5" />
             <path d="M9.5 12.5l2 2 4-4" stroke="#34A853" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
         <h3 className="text-white text-[22px] font-bold tracking-tight">
-          Message Sent!
+          {t.contact.success}
         </h3>
-        <p className="text-white/70 text-[16px] font-normal max-w-xs">
-          Thanks for reaching out. Our team will get back to you shortly.
-        </p>
         <button
-          className="kinetic-gradient px-xl py-md rounded-xl font-headline-md text-white transition-transform hover:scale-105 active:scale-95 border-0 mt-4"
+          className="btn-primary mt-4"
           onClick={() => setStatus("idle")}
         >
-          Send Another Message
+          Send Another
         </button>
       </div>
     );
@@ -149,8 +148,8 @@ export default function ContactForm() {
     <div className="w-full">
       <form className="flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="name" className="text-white/50 text-[14px] font-medium" style={{ fontFamily: "var(--font)" }}>
-            Name *
+          <label htmlFor="name" className="text-on-surface-variant text-[14px] font-medium" style={{ fontFamily: "var(--font)" }}>
+            {t.contact.name} *
           </label>
           <input
             id="name"
@@ -165,8 +164,8 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-white/50 text-[14px] font-medium" style={{ fontFamily: "var(--font)" }}>
-            Email *
+          <label htmlFor="email" className="text-on-surface-variant text-[14px] font-medium" style={{ fontFamily: "var(--font)" }}>
+            {t.contact.email} *
           </label>
           <input
             id="email"
@@ -181,7 +180,7 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="phone" className="text-white/50 text-[14px] font-medium" style={{ fontFamily: "var(--font)" }}>
+          <label htmlFor="phone" className="text-on-surface-variant text-[14px] font-medium" style={{ fontFamily: "var(--font)" }}>
             Phone
           </label>
           <input
@@ -196,8 +195,8 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="message" className="text-white/50 text-[14px] font-medium" style={{ fontFamily: "var(--font)" }}>
-            Message *
+          <label htmlFor="message" className="text-on-surface-variant text-[14px] font-medium" style={{ fontFamily: "var(--font)" }}>
+            {t.contact.message} *
           </label>
           <textarea
             id="message"
@@ -213,16 +212,16 @@ export default function ContactForm() {
 
         {status === "error" && (
           <div className="bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3 text-red-500 text-[14px]" style={{ fontFamily: "var(--font)" }}>
-            {errorMessage || "Failed to send message. Please try again."}
+            {errorMessage || t.contact.error}
           </div>
         )}
 
         <button
           type="submit"
-          className="btn-primary self-start mt-2 neon-glow-purple"
+          className="btn-primary self-start mt-2"
           disabled={status === "submitting"}
         >
-          {status === "submitting" ? "Sending..." : "Send Message"}
+          {status === "submitting" ? t.contact.sending : t.contact.send}
         </button>
       </form>
       <Toast 

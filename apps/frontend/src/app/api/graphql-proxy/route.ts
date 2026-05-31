@@ -33,6 +33,8 @@ export async function POST(request: Request) {
     return NextResponse.json(data);
   } catch (error) {
     console.error('GraphQL Proxy Error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({
+      errors: [{ message: 'Backend unavailable' }],
+    });
   }
 }

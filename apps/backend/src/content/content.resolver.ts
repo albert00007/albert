@@ -10,6 +10,7 @@ import { UpdateContentInput } from './dto/update-content.input';
 export class ContentResolver {
   constructor(private readonly contentService: ContentService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Query(() => [Content], { name: 'contents' })
   async getContents(
     @Args('section', { type: () => String, nullable: true }) section?: string,

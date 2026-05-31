@@ -1,0 +1,266 @@
+- generic [ref=e2]:
+  - progressbar [ref=e3]
+  - banner [ref=e4]:
+    - link "MicroStateDev" [ref=e6] [cursor=pointer]:
+      - /url: /
+      - img [ref=e9]
+      - generic [ref=e16]: MicroStateDev
+    - navigation [ref=e17]:
+      - list [ref=e18]:
+        - listitem [ref=e19]:
+          - link "Home" [ref=e20] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e21]:
+          - link "About" [ref=e22] [cursor=pointer]:
+            - /url: /#about
+        - listitem [ref=e23]:
+          - link "Service" [ref=e24] [cursor=pointer]:
+            - /url: /#service
+        - listitem [ref=e25]:
+          - link "Portfolio" [ref=e26] [cursor=pointer]:
+            - /url: /#portfolio
+        - listitem [ref=e27]:
+          - link "Contact" [ref=e28] [cursor=pointer]:
+            - /url: /#contact
+    - generic [ref=e29]:
+      - button "EN" [ref=e31] [cursor=pointer]:
+        - img [ref=e32]
+        - generic [ref=e37]: EN
+        - img [ref=e38]
+      - link "Contact" [ref=e40] [cursor=pointer]:
+        - /url: "#contact"
+        - generic [ref=e42]: Contact
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46] [cursor=pointer]:
+          - img [ref=e48]
+          - generic [ref=e56]: React.js
+        - generic [ref=e57] [cursor=pointer]:
+          - img [ref=e59]
+          - generic [ref=e61]: Next.js
+        - generic [ref=e62] [cursor=pointer]:
+          - img [ref=e64]
+          - generic [ref=e67]: TypeScript
+        - generic [ref=e68] [cursor=pointer]:
+          - img [ref=e70]
+          - generic [ref=e73]: Node.js
+        - generic [ref=e74] [cursor=pointer]:
+          - img [ref=e76]
+          - generic [ref=e79]: NestJS
+        - generic [ref=e80] [cursor=pointer]:
+          - img [ref=e82]
+          - generic [ref=e86]: Python
+        - generic [ref=e87] [cursor=pointer]:
+          - img [ref=e89]
+          - generic [ref=e93]: PostgreSQL
+        - generic [ref=e94] [cursor=pointer]:
+          - img [ref=e96]
+          - generic [ref=e100]: Redis
+        - generic [ref=e101] [cursor=pointer]:
+          - img [ref=e103]
+          - generic [ref=e112]: GraphQL
+        - generic [ref=e113] [cursor=pointer]:
+          - img [ref=e115]
+          - generic [ref=e124]: Docker
+        - generic [ref=e125] [cursor=pointer]:
+          - img [ref=e127]
+          - generic [ref=e133]: AWS
+        - generic [ref=e134] [cursor=pointer]:
+          - img [ref=e136]
+          - generic [ref=e144]: React Native
+      - generic:
+        - generic [ref=e145]: Accepting New Projects
+        - heading "Engineering Digital Excellence" [level=1] [ref=e147]:
+          - text: Engineering Digital
+          - text: Excellence
+        - paragraph [ref=e148]: We transform complex business ideas into high-performance web and mobile realities using clean architecture and modern technology.
+        - generic [ref=e149]:
+          - link "Start a Project" [ref=e150] [cursor=pointer]:
+            - /url: "#contact"
+          - link "Read Our Blog" [ref=e151] [cursor=pointer]:
+            - /url: /blog
+    - main [ref=e152]:
+      - generic [ref=e155]: Loading company information...
+      - generic [ref=e157]:
+        - generic [ref=e159]:
+          - heading "Development Lifecycle" [level=2] [ref=e160]
+          - paragraph [ref=e161]: Our proprietary development stack follows a strictly engineered pipeline to ensure every product is crafted with precision from concept to deployment.
+        - generic [ref=e162]:
+          - generic [ref=e164] [cursor=pointer]:
+            - img [ref=e166]
+            - heading "Atomic Discovery" [level=3] [ref=e170]
+            - paragraph [ref=e171]: Precise requirements gathering and system architecture planning.
+          - generic [ref=e172] [cursor=pointer]:
+            - img [ref=e174]
+            - heading "Kinetic Engineering" [level=3] [ref=e178]
+            - paragraph [ref=e179]: High-performance software development utilizing AI-driven tooling.
+          - generic [ref=e180] [cursor=pointer]:
+            - img [ref=e182]
+            - heading "MicroState Quality" [level=3] [ref=e186]
+            - paragraph [ref=e187]: Zero-latency continuous integration with granular test telemetry.
+          - generic [ref=e188] [cursor=pointer]:
+            - img [ref=e190]
+            - heading "Immutable Deployment" [level=3] [ref=e193]
+            - paragraph [ref=e194]: Secure, automated deployment pipelines with zero-downtime rollouts.
+      - generic [ref=e197]:
+        - heading "Ready to Build Your Next Project?" [level=2] [ref=e199]
+        - paragraph [ref=e200]: Connect your enterprise to the most advanced development team. Experience the power of MicroStateDev.
+        - generic [ref=e201]:
+          - button "Start a Project" [ref=e202] [cursor=pointer]
+          - button "View Our Services" [ref=e203] [cursor=pointer]
+    - generic [ref=e206]:
+      - heading "Our Engineering Solutions" [level=1] [ref=e207]
+      - paragraph [ref=e208]: Next-generation technical precision for digital enterprises. Scalable, automated, and architecturally optimized.
+    - generic [ref=e235]:
+      - heading "Our Portfolio" [level=2] [ref=e236]
+      - paragraph [ref=e237]: A selection of enterprise projects that showcase our software engineering expertise.
+      - generic [ref=e238]:
+        - generic [ref=e239]:
+          - generic [ref=e241]: Web Development
+          - heading "Enterprise SaaS Platform" [level=3] [ref=e242]
+          - paragraph [ref=e243]: A high-performance SaaS platform built with Next.js and NestJS, handling 10k+ concurrent users with GraphQL-powered real-time data.
+          - generic [ref=e244]:
+            - generic [ref=e245]: React
+            - generic [ref=e246]: Next.js
+            - generic [ref=e247]: NestJS
+            - generic [ref=e248]: GraphQL
+        - generic [ref=e249]:
+          - generic [ref=e251]: Mobile
+          - heading "Mobile Commerce App" [level=3] [ref=e252]
+          - paragraph [ref=e253]: Cross-platform mobile application for iOS and Android built with React Native, featuring real-time inventory and payment processing.
+          - generic [ref=e254]:
+            - generic [ref=e255]: React Native
+            - generic [ref=e256]: Node.js
+            - generic [ref=e257]: Stripe API
+        - generic [ref=e258]:
+          - generic [ref=e260]: Data & Automation
+          - heading "Data Analytics Dashboard" [level=3] [ref=e261]
+          - paragraph [ref=e262]: Real-time analytics dashboard with Python-based data processing pipeline, providing actionable insights through interactive visualizations.
+          - generic [ref=e263]:
+            - generic [ref=e264]: Python
+            - generic [ref=e265]: D3.js
+            - generic [ref=e266]: WebSocket
+            - generic [ref=e267]: PostgreSQL
+        - generic [ref=e268]:
+          - generic [ref=e270]: Backend Architecture
+          - heading "API Gateway & Microservices" [level=3] [ref=e271]
+          - paragraph [ref=e272]: Enterprise API gateway orchestrating 15+ microservices with NestJS, featuring rate limiting, caching, and comprehensive monitoring.
+          - generic [ref=e273]:
+            - generic [ref=e274]: NestJS
+            - generic [ref=e275]: Redis
+            - generic [ref=e276]: Docker
+            - generic [ref=e277]: TypeORM
+        - generic [ref=e278]:
+          - generic [ref=e280]: Web Development
+          - heading "Healthcare Platform" [level=3] [ref=e281]
+          - paragraph [ref=e282]: HIPAA-compliant healthcare management platform with secure patient data handling, appointment scheduling, and telemedicine integration.
+          - generic [ref=e283]:
+            - generic [ref=e284]: React
+            - generic [ref=e285]: Next.js
+            - generic [ref=e286]: GraphQL
+            - generic [ref=e287]: PostgreSQL
+        - generic [ref=e288]:
+          - generic [ref=e290]: Data & Automation
+          - heading "AI-Powered Chat System" [level=3] [ref=e291]
+          - paragraph [ref=e292]: Intelligent customer service chatbot with NLP processing, sentiment analysis, and seamless handoff to human agents.
+          - generic [ref=e293]:
+            - generic [ref=e294]: Python
+            - generic [ref=e295]: TensorFlow
+            - generic [ref=e296]: WebSocket
+            - generic [ref=e297]: Redis
+    - generic [ref=e298]:
+      - generic [ref=e299]:
+        - heading "Let’s Connect" [level=2] [ref=e300]
+        - paragraph [ref=e301]: Have a project in mind or just want to say hello? We’d love to hear from you.
+      - generic [ref=e302]:
+        - generic [ref=e305]:
+          - heading "Get in Touch" [level=4] [ref=e306]
+          - paragraph [ref=e307]: We architect digital solutions for the future. Reach out for an engineering consultation or to discuss your next big product.
+          - generic [ref=e308]:
+            - link "Email tech@microstatedev.com" [ref=e309] [cursor=pointer]:
+              - /url: mailto:tech@microstatedev.com
+              - img [ref=e311]
+              - generic [ref=e314]:
+                - text: Email
+                - paragraph [ref=e315]: tech@microstatedev.com
+            - link "Phone +374 41 355 605" [ref=e316] [cursor=pointer]:
+              - /url: tel:+37441355605
+              - img [ref=e318]
+              - generic [ref=e320]:
+                - text: Phone
+                - paragraph [ref=e321]: +374 41 355 605
+        - generic [ref=e324]:
+          - generic [ref=e325]:
+            - generic [ref=e326]: Name *
+            - textbox "Name *" [ref=e327]:
+              - /placeholder: Jane Doe
+          - generic [ref=e328]:
+            - generic [ref=e329]: Email *
+            - textbox "Email *" [ref=e330]:
+              - /placeholder: jane@example.com
+          - generic [ref=e331]:
+            - generic [ref=e332]: Phone
+            - textbox "Phone" [ref=e333]:
+              - /placeholder: +374 XX XXX XXX
+          - generic [ref=e334]:
+            - generic [ref=e335]: Message *
+            - textbox "Message *" [ref=e336]:
+              - /placeholder: Tell us about your project...
+          - button "Send Message" [ref=e337] [cursor=pointer]
+  - contentinfo [ref=e338]:
+    - generic [ref=e339]:
+      - generic [ref=e340]:
+        - generic [ref=e341]:
+          - paragraph [ref=e342]: MicroStateDev
+          - paragraph [ref=e343]: Precision execution, clean architecture, and scalable infrastructure. Engineering the future of digital products.
+        - generic [ref=e344]:
+          - generic [ref=e345]:
+            - paragraph [ref=e346]: Resources
+            - navigation [ref=e347]:
+              - link "Home" [ref=e348] [cursor=pointer]:
+                - /url: /
+              - link "About" [ref=e349] [cursor=pointer]:
+                - /url: /#about
+              - link "Services" [ref=e350] [cursor=pointer]:
+                - /url: /#service
+              - link "Portfolio" [ref=e351] [cursor=pointer]:
+                - /url: /#portfolio
+          - generic [ref=e352]:
+            - paragraph [ref=e353]: Legal
+            - navigation [ref=e354]:
+              - link "Terms of Service" [ref=e355] [cursor=pointer]:
+                - /url: /terms
+              - link "Privacy Policy" [ref=e356] [cursor=pointer]:
+                - /url: /privacy
+        - generic [ref=e357]:
+          - paragraph [ref=e358]: Newsletter
+          - paragraph [ref=e359]: Insights on tech and architecture.
+          - generic [ref=e360]:
+            - textbox "Email address" [ref=e361]
+            - button "Join" [ref=e362] [cursor=pointer]
+      - generic [ref=e363]:
+        - generic [ref=e364]:
+          - img [ref=e365]
+          - img [ref=e370]
+          - img [ref=e374]
+          - img [ref=e376]
+          - img [ref=e378]
+        - paragraph [ref=e381]: © 2026 MicroStateDev. All rights reserved.
+        - generic [ref=e382]:
+          - link "Twitter" [ref=e383] [cursor=pointer]:
+            - /url: https://twitter.com/microstatedev
+            - generic [ref=e384]: Twitter
+            - img [ref=e385]
+          - link "Instagram" [ref=e387] [cursor=pointer]:
+            - /url: https://instagram.com/microstatedev
+            - generic [ref=e388]: Instagram
+            - img [ref=e389]
+          - link "Github" [ref=e392] [cursor=pointer]:
+            - /url: https://github.com/microstatedev
+            - generic [ref=e393]: Github
+            - img [ref=e394]
+          - link "Youtube" [ref=e396] [cursor=pointer]:
+            - /url: https://youtube.com/microstatedev
+            - generic [ref=e397]: Youtube
+            - img [ref=e398]

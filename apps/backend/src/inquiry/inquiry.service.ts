@@ -26,6 +26,12 @@ export class InquiryService {
     return savedInquiry;
   }
 
+  async findAll(): Promise<Inquiry[]> {
+    return this.inquiryRepository.find({
+      order: { createdAt: 'DESC' }, // Return newest first
+    });
+  }
+
   private async sendNotifications(inquiry: Inquiry) {
     const telegramToken = this.configService.get<string>('TELEGRAM_BOT_TOKEN');
     const telegramChatId = this.configService.get<string>('TELEGRAM_CHAT_ID');

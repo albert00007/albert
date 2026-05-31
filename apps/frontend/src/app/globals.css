@@ -179,7 +179,7 @@
   --surface: #0a0a0a;
   --main_color: rgba(255,255,255,0.85);
   --accent: #0A84FF;
-  --accent-2: #9A67EA;
+  --accent-2: #64FFDA;
   --accent-3: #10B981;
   --main_padding: 2% 5%;
   --text_color: #FFFFFF;
@@ -199,6 +199,7 @@ html, body {
   background-color: var(--bg);
   color: var(--text_color);
   font-family: var(--font);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 300ms ease, color 300ms ease;
@@ -435,11 +436,32 @@ html, body {
    ────────────────────────────────────────────── */
 
 .glass-panel, .glass-card, .card-base {
-  background: rgba(17, 34, 64, 0.6); /* deep navy */
+  background: linear-gradient(145deg, rgba(8, 18, 35, 0.82), rgba(9, 13, 24, 0.72));
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(100, 255, 218, 0.1); /* subtle cyan border */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.32);
+}
+
+.unified-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.unified-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(10, 132, 255, 0.12), transparent 32%),
+    linear-gradient(300deg, rgba(16, 185, 129, 0.09), transparent 36%);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.unified-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .sci-fi-gradient {
@@ -452,6 +474,11 @@ html, body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+.section-title-accent {
+  color: var(--accent);
+  text-shadow: 0 0 22px rgba(10, 132, 255, 0.24);
 }
 
 @keyframes kinetic-flow {
@@ -510,12 +537,13 @@ html, body {
 
 .text-on-surface { color: var(--color-surface-white); }
 .text-on-surface-variant { color: var(--muted); }
-.text-primary { color: var(--accent-2); }
+.text-primary { color: var(--accent); }
 .bg-surface-container-low { background-color: rgba(24, 24, 27, 0.4); }
 .bg-surface-container-high { background-color: rgba(24, 24, 27, 0.8); }
 .bg-surface-container-highest { background-color: rgba(39, 39, 42, 1); }
 .border-outline-variant { border-color: rgba(255, 255, 255, 0.1); }
-.border-primary { border-color: var(--accent-2); }
+.border-primary { border-color: rgba(10, 132, 255, 0.45); }
+.bg-primary { background-color: var(--accent); }
 .text-on-primary { color: #fff; }
 
 .card-glow {
@@ -615,4 +643,13 @@ html, body {
   box-shadow: 
     0 0 10px rgba(255, 255, 255, 0.5),
     0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.msd-circle-primary-glow {
+  background: linear-gradient(135deg, rgba(10, 132, 255, 0.95), rgba(100, 255, 218, 0.82));
+  color: #020617;
+  border: 1px solid rgba(100, 255, 218, 0.6);
+  box-shadow:
+    0 0 14px rgba(10, 132, 255, 0.44),
+    0 0 28px rgba(100, 255, 218, 0.18);
 }

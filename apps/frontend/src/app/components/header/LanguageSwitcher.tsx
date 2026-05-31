@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconLanguage, IconChevronDown } from "@tabler/icons-react";
+import { useI18n } from "../../i18nContext";
 
 const languages = [
   { code: 'EN', name: 'English' },
@@ -12,7 +13,7 @@ const languages = [
 
 export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState('EN');
+  const { lang: currentLang, setLang } = useI18n();
 
   return (
     <div className="relative z-50">
@@ -42,22 +43,22 @@ export default function LanguageSwitcher() {
               transition={{ duration: 0.2 }}
               className="absolute top-full right-0 mt-2 w-36 bg-surface-container-high border border-outline/50 rounded-xl shadow-xl overflow-hidden z-50"
             >
-              {languages.map((lang) => (
+              {languages.map((langItem) => (
                 <button
-                  key={lang.code}
+                  key={langItem.code}
                   onClick={() => {
-                    setCurrentLang(lang.code);
+                    setLang(langItem.code as "EN" | "RU" | "AM");
                     setIsOpen(false);
                   }}
                   className={`w-full text-left px-4 py-3 text-sm font-medium transition-colors ${
-                    currentLang === lang.code 
+                    currentLang === langItem.code 
                       ? 'bg-brand-cyan/10 text-brand-cyan' 
                       : 'text-on-surface hover:bg-surface-container-highest hover:text-brand-cyan'
                   }`}
                 >
                   <span className="flex items-center justify-between">
-                    {lang.name}
-                    {currentLang === lang.code && <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse" />}
+                    {langItem.name}
+                    {currentLang === langItem.code && <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse" />}
                   </span>
                 </button>
               ))}

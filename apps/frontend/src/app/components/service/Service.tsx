@@ -1,7 +1,6 @@
 
 'use client';
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { IconDeviceDesktop, IconServer, IconDeviceMobile, IconPackage } from '@tabler/icons-react';
 
 interface Content {
@@ -11,7 +10,7 @@ interface Content {
   icon: string; // Assuming icon is a string identifier
 }
 
-const ServiceItem = ({ item, index }: { item: Content; index: number }) => {
+const ServiceItem = ({ item }: { item: Content }) => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'web':
@@ -26,14 +25,10 @@ const ServiceItem = ({ item, index }: { item: Content; index: number }) => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      viewport={{ once: true }}
-      className="glass-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 md:gap-6"
+    <div
+      className="glass-card unified-card p-6 md:p-8 rounded-lg flex flex-col items-start gap-4 md:gap-6"
     >
-      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+      <div className="w-12 h-12 rounded-lg bg-[rgba(10,132,255,0.10)] flex items-center justify-center border border-[rgba(10,132,255,0.22)] shadow-[0_0_24px_rgba(10,132,255,0.12)]">
         {getIcon(item.icon)}
       </div>
       <div>
@@ -43,11 +38,11 @@ const ServiceItem = ({ item, index }: { item: Content; index: number }) => {
         </p>
       </div>
       <div className="mt-auto pt-md">
-        <button className="font-label-md text-label-md border border-primary text-primary px-lg py-xs rounded-lg hover:bg-primary hover:text-on-primary transition-all duration-300">
+        <button className="font-label-md text-label-md border border-[rgba(10,132,255,0.45)] text-primary px-lg py-xs rounded-lg hover:bg-[var(--accent)] hover:text-white transition-all duration-300">
           Learn More
         </button>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -99,7 +94,7 @@ export default function Service() {
       <div className="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="text-center mb-12 md:mb-16">
           <h1 className="font-headline-lg text-headline-lg md:text-display-lg text-on-surface mb-6">
-            Our Engineering <span className="text-primary drop-shadow-[0_0_15px_rgba(208,188,255,0.4)]">Solutions</span>
+            Our Engineering <span className="section-title-accent">Solutions</span>
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
             Next-generation technical precision for digital enterprises. Scalable, automated, and architecturally optimized.
@@ -109,7 +104,7 @@ export default function Service() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
           {loading ? (
             [...Array(3)].map((_, i) => (
-              <div key={i} className="glass-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 md:gap-6 animate-pulse">
+              <div key={i} className="glass-card unified-card p-6 md:p-8 rounded-lg flex flex-col items-start gap-4 md:gap-6 animate-pulse">
                 <div className="w-12 h-12 rounded-lg bg-white/10"></div>
                 <div className='w-full'>
                   <div className="h-6 w-1/2 rounded bg-white/10 mb-xs"></div>
@@ -122,8 +117,8 @@ export default function Service() {
               </div>
             ))
           ) : (
-            content.map((item, index) => (
-              <ServiceItem key={item.id} item={item} index={index} />
+            content.map((item) => (
+              <ServiceItem key={item.id} item={item} />
             ))
           )}
         </div>

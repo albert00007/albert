@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { IconCodeAsterisk } from "@tabler/icons-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useI18n } from "../../i18nContext";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,14 +57,13 @@ export default function Header() {
       <nav className="hidden md:flex items-center">
         <ul className="flex gap-8 list-none items-center m-0 p-0">
           {[
-            { name: "Home", href: "/" },
-            { name: "About", href: "/#about" },
-            { name: "Service", href: "/#service" },
-            { name: "Portfolio", href: "/#portfolio" },
-            { name: "Contact", href: "/#contact" }
+            { name: t.nav.home, href: "/" },
+            { name: t.nav.about, href: "/#about" },
+            { name: t.nav.service, href: "/#service" },
+            { name: t.nav.portfolio, href: "/#portfolio" }
           ].map((item) => (
             <li
-              key={item.name}
+              key={item.href}
               className="relative group"
             >
               <Link 
@@ -71,7 +72,6 @@ export default function Header() {
               >
                 {item.name}
               </Link>
-              {/* Glowing underline indicator */}
               <div className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-purple-500 to-green-500 transition-all duration-300 ease-out group-hover:w-full opacity-0 group-hover:opacity-100 shadow-[0_0_10px_rgba(74,222,128,0.5)]" />
             </li>
           ))}
@@ -84,10 +84,9 @@ export default function Header() {
           href="#contact"
           className="hidden md:flex relative overflow-hidden group px-8 py-3 rounded-full bg-surface-container-high border border-outline/30 transition-all duration-300 hover:border-brand-cyan/50 hover:shadow-[0_0_20px_rgba(100,255,218,0.2)]"
         >
-          {/* Button Hover Background Effect */}
           <div className="absolute inset-0 bg-brand-cyan/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out rounded-full" />
           <span className="relative z-10 text-sm font-bold text-white uppercase tracking-widest group-hover:text-brand-cyan transition-colors">
-            Contact
+            {t.nav.contact}
           </span>
         </a>
         
@@ -104,7 +103,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <div
         className={`md:hidden fixed inset-0 bg-black/95 backdrop-blur-2xl z-40 transition-all duration-500 ease-in-out ${
           isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"
@@ -113,14 +111,14 @@ export default function Header() {
         <div className="flex flex-col items-center justify-center h-full w-full">
           <ul className="flex flex-col gap-10 list-none items-center">
             {[
-              { name: "Home", href: "/" },
-              { name: "About", href: "/#about" },
-              { name: "Service", href: "/#service" },
-              { name: "Portfolio", href: "/#portfolio" },
-              { name: "Contact", href: "/#contact" }
+              { name: t.nav.home, href: "/" },
+              { name: t.nav.about, href: "/#about" },
+              { name: t.nav.service, href: "/#service" },
+              { name: t.nav.portfolio, href: "/#portfolio" },
+              { name: t.nav.contact, href: "/#contact" }
             ].map((item, i) => (
               <li
-                key={item.name}
+                key={item.href}
                 className="transform transition-transform duration-500"
                 style={{ transitionDelay: isOpen ? `${i * 100}ms` : '0ms', transform: isOpen ? 'translateY(0)' : 'translateY(20px)' }}
               >
@@ -140,7 +138,7 @@ export default function Header() {
             onClick={closeMenu}
             className="mt-12 text-center text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-400 uppercase tracking-widest"
           >
-            Связаться с нами
+            {t.nav.contact}
           </a>
         </div>
       </div>

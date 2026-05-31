@@ -82,9 +82,9 @@ export default function About() {
                return (
                  <div 
                    key={item.id} 
-                   className="glass-panel p-6 md:p-8 rounded-xl group cursor-pointer border border-[#374151] hover:border-gray-300 transition-colors duration-500 will-change-transform-opacity"
+                   className="glass-panel unified-card p-6 md:p-8 rounded-lg group cursor-pointer border border-outline-variant hover:border-[rgba(10,132,255,0.45)] transition-colors duration-500 will-change-transform-opacity"
                  >
-                   <h2 className="font-display-lg text-headline-lg mb-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all duration-500">
+                   <h2 className="font-display-lg text-headline-lg mb-4 text-white group-hover:text-[var(--accent)] transition-all duration-500">
                      {item.title}
                    </h2>
                    
@@ -124,7 +124,7 @@ export default function About() {
               {/* Desktop Progress Line */}
               <div className="hidden md:block absolute top-6 left-0 w-full h-[2px] bg-outline-variant/30 z-0 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-white shadow-[0_0_10px_#ffffff] origin-left will-change-transform" 
+                  className="h-full bg-[var(--accent)] shadow-[0_0_10px_rgba(10,132,255,0.7)] origin-left will-change-transform" 
                   style={{ 
                     transform: hoveredStep !== null ? `scaleX(${(hoveredStep + 1) * 0.25})` : 'scaleX(0)',
                     transition: 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)'
@@ -137,7 +137,7 @@ export default function About() {
                 className="relative z-10 cursor-pointer group"
                 onMouseEnter={() => setHoveredStep(0)}
               >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-all duration-300 ${hoveredStep !== null && hoveredStep >= 0 ? 'msd-circle-white-glow' : 'bg-[#1F2937] border border-[#374151] text-[#9CA3AF]'}`}>
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${hoveredStep !== null && hoveredStep >= 0 ? 'msd-circle-primary-glow' : 'bg-[#050B16] border border-white/10 text-[#9CA3AF]'}`}>
                   <IconInputSearch className="w-6 h-6" />
                 </div>
                 <h3 className={`font-headline-md text-headline-md mb-2 transition-colors duration-300 ${hoveredStep !== null && hoveredStep >= 0 ? 'text-white' : 'text-[#9CA3AF]'}`}>Atomic Discovery</h3>
@@ -151,7 +151,7 @@ export default function About() {
                 className="relative z-10 cursor-pointer group"
                 onMouseEnter={() => setHoveredStep(1)}
               >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-all duration-300 ${hoveredStep !== null && hoveredStep >= 1 ? 'msd-circle-white-glow' : 'bg-[#1F2937] border border-[#374151] text-[#9CA3AF]'}`}>
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${hoveredStep !== null && hoveredStep >= 1 ? 'msd-circle-primary-glow' : 'bg-[#050B16] border border-white/10 text-[#9CA3AF]'}`}>
                   <IconRoute className="w-6 h-6" />
                 </div>
                 <h3 className={`font-headline-md text-headline-md mb-2 transition-colors duration-300 ${hoveredStep !== null && hoveredStep >= 1 ? 'text-white' : 'text-[#9CA3AF]'}`}>Kinetic Engineering</h3>
@@ -165,7 +165,7 @@ export default function About() {
                 className="relative z-10 cursor-pointer group"
                 onMouseEnter={() => setHoveredStep(2)}
               >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-all duration-300 ${hoveredStep !== null && hoveredStep >= 2 ? 'msd-circle-white-glow' : 'bg-[#1F2937] border border-[#374151] text-[#9CA3AF]'}`}>
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${hoveredStep !== null && hoveredStep >= 2 ? 'msd-circle-primary-glow' : 'bg-[#050B16] border border-white/10 text-[#9CA3AF]'}`}>
                   <IconChartBar className="w-6 h-6" />
                 </div>
                 <h3 className={`font-headline-md text-headline-md mb-2 transition-colors duration-300 ${hoveredStep !== null && hoveredStep >= 2 ? 'text-white' : 'text-[#9CA3AF]'}`}>MicroState Quality</h3>
@@ -179,7 +179,7 @@ export default function About() {
                 className="relative z-10 cursor-pointer group"
                 onMouseEnter={() => setHoveredStep(3)}
               >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-all duration-300 ${hoveredStep !== null && hoveredStep >= 3 ? 'msd-circle-white-glow' : 'bg-[#1F2937] border border-[#374151] text-[#9CA3AF]'}`}>
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${hoveredStep !== null && hoveredStep >= 3 ? 'msd-circle-primary-glow' : 'bg-[#050B16] border border-white/10 text-[#9CA3AF]'}`}>
                   <IconShieldCheck className="w-6 h-6" />
                 </div>
               <h3 className={`font-headline-md text-headline-md mb-2 transition-colors duration-300 ${hoveredStep !== null && hoveredStep >= 3 ? 'text-white' : 'text-[#9CA3AF]'}`}>Immutable Deployment</h3>
@@ -193,10 +193,10 @@ export default function About() {
       {/* CTA Section */}
       <section className="py-xl px-margin-mobile md:px-margin-desktop">
         <div className="max-w-[1200px] mx-auto">
-          <div className="glass-panel p-xl rounded-xl text-center relative overflow-hidden group">
+          <div className="glass-panel unified-card p-xl rounded-lg text-center relative overflow-hidden group">
             {/* Background Accent */}
-            <div className="absolute -right-24 -bottom-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px] group-hover:bg-primary/20 transition-all duration-700"></div>
-            <h2 className="font-display-lg text-display-lg mb-md text-white relative z-10">Ready to Build Your <span className="sci-fi-text-gradient font-extrabold">Next Project?</span></h2>
+            <div className="absolute -right-24 -bottom-24 w-96 h-96 bg-[rgba(10,132,255,0.10)] rounded-full blur-[100px] group-hover:bg-[rgba(10,132,255,0.18)] transition-all duration-700"></div>
+            <h2 className="font-display-lg text-headline-lg md:text-display-lg mb-md text-white relative z-10">Ready to Build Your <span className="section-title-accent font-extrabold">Next Project?</span></h2>
             <p className="font-body-lg text-body-lg text-[#9CA3AF] max-w-2xl mx-auto mb-lg relative z-10">
               Connect your enterprise to the most advanced development team. Experience the power of MicroStateDev.
             </p>

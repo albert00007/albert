@@ -33,7 +33,7 @@ export default function Home() {
               Have a project in mind or just want to say hello? We’d love to hear from you.
             </p>
           </div>
-          <div className="glass-panel p-xl rounded-xl grid grid-cols-1 lg:grid-cols-5 gap-xl mt-xl">
+          <div className="glass-panel unified-card p-xl rounded-lg grid grid-cols-1 lg:grid-cols-5 gap-xl mt-xl">
             <div className="lg:col-span-2">
               <Contact />
             </div>
